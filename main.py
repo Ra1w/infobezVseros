@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QMainWindow, QTabWidget, QApplication
 from PyQt6.QtGui import QFont
 from App.encrypt import Encrypt
 from App.decrypt import Decrypt
+from App.description import Description
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -14,6 +15,9 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.tab)
         self.setGeometry(200, 200, 650, 500)
         self.setStyleSheet("background-color: #828cae; color: #000000")
+
+        self.DescriptionTab = Description()
+        self.tab.addTab(self.DescriptionTab, "Описание программы")
 
         self.EncryptTab = Encrypt()
         self.tab.addTab(self.EncryptTab, "Шифрование")
