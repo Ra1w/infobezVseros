@@ -1,3 +1,4 @@
 # infobezVseros
 
-hello world?
+Запуск через main.py
+требуется pyqt6
