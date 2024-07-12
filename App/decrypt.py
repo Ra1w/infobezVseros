@@ -42,6 +42,11 @@ class Decrypt(QWidget):
         h1layout.addWidget(self.plaintext, 1)
 
     def file_selection(self):
-        file_path = QFileDialog.getOpenFileName()[0]
+        file_path = QFileDialog.getOpenFileName(
+            None,
+            'Выбрать изображение',
+            '',
+            "Image files (*.png *.xmp *.jpeg)"
+        )[0]
         if file_path != '':
             self.label_selection_file.setText("Выбран файл: {}".format(file_path[file_path.rfind("/") + 1:]))
