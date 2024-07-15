@@ -8,7 +8,10 @@ class Blue_changing:
         x, y = image.size
         for i in range(min(size, x*y)):
             t = pixels[i % x, i // x]
-            pixels[i % x, i // x] = (t[0], t[1], ord(message[i]))
+            sim = ord(message[i])
+            if sim > 1023:
+                sim -= 896
+            pixels[i % x, i // x] = (t[0], t[1], sim)
         image.save(file_path)
     def decrypt(file_path):
         image = Image.open(file_path)
@@ -17,5 +20,8 @@ class Blue_changing:
         x, y = image.size
         for j in range(y):
             for i in range(x):
-                answer += chr(pixels[i, j][2])
+                sim = pixels[i, j][2]
+                if sim > 127:
+                    sim += 896
+                answer += chr(sim)
         return answer
