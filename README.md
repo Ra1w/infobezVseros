@@ -1,4 +1,4 @@
 # infobezVseros
 
-Запуск через main.py
-требуется pyqt6
+Запуск через main.py; 
+требуются библиотеки pyqt6 b и Pillow; 
