@@ -1,6 +1,8 @@
 from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog
 from PyQt6.QtGui import QFont
+from App.cipher import Blue_changing
 
+file_path = ''
 
 class Decrypt(QWidget):
     def __init__(self):
@@ -23,10 +25,13 @@ class Decrypt(QWidget):
         self.label_selection_file.setFont(QFont("Times", 16))
         vlayout.addWidget(self.label_selection_file, 1)
 
+
+
         self.btn_decrypt = QPushButton()
         self.btn_decrypt.setText("Расшифровать")
         self.btn_decrypt.resize(100, 20)
         self.btn_decrypt.setFont(QFont("Times", 14))
+        self.btn_decrypt.clicked.connect(self.decryption)
         vlayout.addWidget(self.btn_decrypt, 2)
 
         vlayout.addLayout(h1layout, 3)
@@ -42,11 +47,17 @@ class Decrypt(QWidget):
         h1layout.addWidget(self.plaintext, 1)
 
     def file_selection(self):
+        global file_path
         file_path = QFileDialog.getOpenFileName(
             None,
             'Выбрать изображение',
             '',
-            "Image files (*.png *.xmp *.jpeg)"
+            "Image files (*.png)"
         )[0]
         if file_path != '':
             self.label_selection_file.setText("Выбран файл: {}".format(file_path[file_path.rfind("/") + 1:]))
+
+    def decryption(self):
+        global file_path
+        if file_path != '':
+            self.plaintext.setText(Blue_changing.decrypt(file_path))

@@ -1,6 +1,8 @@
-from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog
+from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog, QMessageBox
 from PyQt6.QtGui import QFont
+from App.cipher import Blue_changing
 
+file_path = ''
 
 class Encrypt (QWidget):
     def __init__(self):
@@ -39,19 +41,26 @@ class Encrypt (QWidget):
         self.btn_encrypt.setText("Зашифровать")
         self.btn_encrypt.resize(100, 20)
         self.btn_encrypt.setFont(QFont("Times", 14))
+        self.btn_encrypt.clicked.connect(self.encryption)
         vlayout.addWidget(self.btn_encrypt, 3)
 
 
     def file_selection(self):
+        global file_path
         file_path = QFileDialog.getOpenFileName(
             None,
             'Выбрать изображение',
             '',
-            "Image files (*.png *.xmp *.jpeg)"
+            "Image files (*.png)"
         )[0]
         if file_path != '':
             self.label_selection_file.setText("Выбран файл: {}".format(file_path[file_path.rfind("/") + 1:]))
 
-
-
-
+    def encryption(self):
+        global file_path
+        plaintext = self.plaintext.toPlainText()
+        if file_path != '':
+            Blue_changing.encrypt(plaintext, file_path)
+            msgBox = QMessageBox()
+            msgBox.setText("Данные успешно скрыты")
+            msgBox.exec()
