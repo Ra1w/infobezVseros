@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog
+from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog, QMessageBox
 from PyQt6.QtGui import QFont
 from App.cipher import Blue_changing
 
@@ -60,4 +60,7 @@ class Decrypt(QWidget):
     def decryption(self):
         global file_path
         if file_path != '':
+            msgBox = QMessageBox()
+            msgBox.setText("Подождите, расшифровка может занять некоторое время")
+            msgBox.exec()
             self.plaintext.setText(Blue_changing.decrypt(file_path))
