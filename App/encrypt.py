@@ -59,8 +59,13 @@ class Encrypt (QWidget):
     def encryption(self):
         global file_path
         plaintext = self.plaintext.toPlainText()
-        if file_path != '':
-            Blue_changing.encrypt(plaintext, file_path)
-            msgBox = QMessageBox()
-            msgBox.setText("Данные успешно скрыты")
-            msgBox.exec()
+        if len(plaintext) > 80000:
+            msgBox1 = QMessageBox()
+            msgBox1.setText("Не рекомендуется вводить более 80000 символов")
+            msgBox1.exec()
+        else:
+            if file_path != '':
+                Blue_changing.encrypt(plaintext, file_path)
+                msgBox = QMessageBox()
+                msgBox.setText("Данные успешно скрыты")
+                msgBox.exec()

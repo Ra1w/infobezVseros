@@ -15,7 +15,9 @@ class Description(QWidget):
                            "текст в изображении формата *.png, а также и находить \n"
                            "такой текст в изображении.\n"
                            "Поддерживаются все символы Ascii и символы Unicode от 0400 до \n "
-                           "047F (Кириллица).")
+                           "047F (Кириллица).\n"
+                           "        Для безопасности данных не рекомендуется вводить более \n"
+                           "80000 символов.")
         self.label.setStyleSheet("background-color: {}".format('#828cae'))
         self.label.setFont(QFont("Times", 15))
         layout.addWidget(self.label, 0)
