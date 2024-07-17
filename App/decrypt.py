@@ -60,7 +60,4 @@ class Decrypt(QWidget):
     def decryption(self):
         global file_path
         if file_path != '':
-            msgBox = QMessageBox()
-            msgBox.setText("Подождите, расшифровка может занять некоторое время")
-            msgBox.exec()
             self.plaintext.setText(Blue_changing.decrypt(file_path))

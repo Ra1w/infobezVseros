@@ -1,3 +1,4 @@
+from PIL import Image
 from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog, QMessageBox
 from PyQt6.QtGui import QFont
 from App.cipher import Blue_changing
@@ -59,12 +60,16 @@ class Encrypt (QWidget):
     def encryption(self):
         global file_path
         plaintext = self.plaintext.toPlainText()
-        if len(plaintext) > 80000:
-            msgBox1 = QMessageBox()
-            msgBox1.setText("Не рекомендуется вводить более 80000 символов")
-            msgBox1.exec()
-        else:
-            if file_path != '':
+        if file_path != '':
+            image = Image.open(file_path)
+            x, y = image.size
+            k = 100
+            if len(plaintext)*k > x*y:
+                msgBox2 = QMessageBox()
+                msgBox2.warning(self, "Внимание!", "Текст слишком большой или изображение слишком мало. \n"
+                                "Для безопасности данных рекомендуется взять изображение\n"
+                                "большего размера или сократить желаемый текст.")
+            else:
                 Blue_changing.encrypt(plaintext, file_path)
                 msgBox = QMessageBox()
                 msgBox.setText("Данные успешно скрыты")
