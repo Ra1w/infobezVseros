@@ -34,8 +34,8 @@ class Blue_changing:
         mas = [[True]*y for i in range(x)]
         mas[0][0] = False
         k = 100
-        i = 0
-        while i * k < x*y:
+        i = 1
+        while i * k <= x*y:
             x1 = randint(0, x - 1)
             y1 = randint(0, y - 1)
             if mas[x1][y1]:
