@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QTextEdit, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QFileDialog, QMessageBox
 from PyQt6.QtGui import QFont
 from App.cipher import Blue_changing
+import os
 
 file_path = ''
 
@@ -60,4 +61,14 @@ class Decrypt(QWidget):
     def decryption(self):
         global file_path
         if file_path != '':
-            self.plaintext.setText(Blue_changing.decrypt(file_path))
+            ves = os.stat(file_path).st_size
+            if ves > 100*2**20:
+                msgBox3 = QMessageBox()
+                msgBox3.critical(self, "Ошибка!",
+                              "Слишком большое изображение, пожалуйста, выберите изображение меньшего размера")
+            else:
+                if ves > 2**20:
+                    msgBox3 = QMessageBox()
+                    msgBox3.information(self, "Предупреждение",
+                                     "Расшифровка может занят достаточно много времени, пожалуйста, подождите.")
+                self.plaintext.setText(Blue_changing.decrypt(file_path))

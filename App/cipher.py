@@ -1,6 +1,8 @@
 from PIL import Image
 from random import seed, randint
 
+Image.MAX_IMAGE_PIXELS = 1000000000000
+
 class Blue_changing:
     def encrypt(message, file_path):
         image = Image.open(file_path)
