@@ -64,14 +64,19 @@ class Encrypt (QWidget):
         global file_path
         plaintext = self.plaintext.toPlainText()
         if file_path != '':
-            if (os.stat(file_path).st_size) > 100*2**20:
+            ves = os.stat(file_path).st_size
+            if ves > 100*2**20:
                 msgBox3 = QMessageBox()
                 msgBox3.critical(self, "Ошибка!",
                               "Слишком большое изображение, пожалуйста, выберите изображение меньшего размера")
             else:
+                if ves > 5*2*20:
+                    msgBox3 = QMessageBox()
+                    msgBox3.information(self, "Предупреждение",
+                                        "Шифрование может занят достаточно много времени, пожалуйста, подождите.")
                 image = Image.open(file_path)
                 x, y = image.size
-                k = 100
+                k = 1000
                 if len(plaintext)*k > x*y or x*y < k:
                     msgBox2 = QMessageBox()
                     msgBox2.warning(self, "Внимание!", "Текст слишком большой или изображение слишком мало. \n"

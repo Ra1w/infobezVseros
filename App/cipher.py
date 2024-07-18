@@ -35,7 +35,7 @@ class Blue_changing:
         seed(m[0] * 1000000 + m[1] * 1000 + m[2])
         mas = [[True]*y for i in range(x)]
         mas[0][0] = False
-        k = 100
+        k = 1000
         i = 1
         while i * k <= x*y:
             x1 = randint(0, x - 1)
