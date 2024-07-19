@@ -22,7 +22,7 @@ class Decrypt(QWidget):
         self.label_selection_file = QLabel(self)
         self.label_selection_file.setText("Файл не выбран")
         self.label_selection_file.resize(100, 20)
-        self.label_selection_file.setStyleSheet("background-color: {}".format('#828cae'))
+        self.label_selection_file.setStyleSheet("background-color: {}".format('#99a4c9'))
         self.label_selection_file.setFont(QFont("Times", 16))
         vlayout.addWidget(self.label_selection_file, 1)
 
@@ -40,7 +40,7 @@ class Decrypt(QWidget):
         self.label_plaintext = QLabel()
         self.label_plaintext.setText("Текст: ")
         self.label_plaintext.setFont(QFont("Times", 14))
-        self.label_plaintext.setStyleSheet("background-color: {}".format('#828cae'))
+        self.label_plaintext.setStyleSheet("background-color: {}".format('#99a4c9'))
         h1layout.addWidget(self.label_plaintext, 0)
 
         self.plaintext = QTextEdit(self)

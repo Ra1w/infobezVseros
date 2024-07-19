@@ -14,7 +14,7 @@ class MainWindow(QMainWindow):
         self.tab.setFont(QFont("Times", 16))
         self.setCentralWidget(self.tab)
         self.setGeometry(200, 200, 650, 500)
-        self.setStyleSheet("background-color: #828cae; color: #000000")
+        self.setStyleSheet("background-color: #99a4c9; color: #000000")
 
         self.DescriptionTab = Description()
         self.tab.addTab(self.DescriptionTab, "Описание программы")

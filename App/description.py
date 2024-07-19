@@ -17,7 +17,8 @@ class Description(QWidget):
                            "Поддерживаются все символы Ascii и символы Unicode от 0400 до \n "
                            "047F (Кириллица).\n"
                            "        Для безопасности данных не рекомендуется вводить больше \n"
-                           "символов, чем 1000 раз меньшее количества пикселей в изображении.")
-        self.label.setStyleSheet("background-color: {}".format('#828cae'))
+                           "символов, чем в 1000 раз меньшее количества пикселей в изображении.\n"
+                           "Также не рекомендуется использовать изображения размером \nбольше 100 Мб.")
+        self.label.setStyleSheet("background-color: {}".format('#99a4c9'))
         self.label.setFont(QFont("Times", 15))
         layout.addWidget(self.label, 0)
