@@ -27,14 +27,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    try:
-        from PyQt6.QtWinExtras import QtWin
-        myappid = 'nocompany.stegophoto.subproduct.1'
-        QtWin.setCurrentProcessExplicitAppUserModelID(myappid)
-    except ImportError:
-        pass
-    app.setWindowIcon(QIcon('icon.png'))
     window = MainWindow()
-    window.setWindowIcon(QIcon('icon.png'))
+    window.setWindowIcon(QIcon('icon.ico'))
     window.show()
     app.exec()
