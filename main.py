@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QMainWindow, QTabWidget, QApplication
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QIcon
 from App.encrypt import Encrypt
 from App.decrypt import Decrypt
 from App.description import Description
@@ -27,7 +27,14 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    try:
+        from PyQt6.QtWinExtras import QtWin
+        myappid = 'nocompany.stegophoto.subproduct.1'
+        QtWin.setCurrentProcessExplicitAppUserModelID(myappid)
+    except ImportError:
+        pass
+    app.setWindowIcon(QIcon('icon.png'))
     window = MainWindow()
+    window.setWindowIcon(QIcon('icon.png'))
     window.show()
-
     app.exec()
